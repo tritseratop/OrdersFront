@@ -1,8 +1,7 @@
-import {AfterViewChecked, AfterViewInit, Component, Input, NgModule, OnInit} from '@angular/core';
+import { Component, Input, NgModule, OnInit} from '@angular/core';
 import {Client} from '../classes/client';
 import {Product} from '../classes/product';
 import {ProductService} from '../product.service';
-import {Category} from '../classes/category';
 import {ActivatedRoute} from '@angular/router';
 import {Orders} from '../classes/orders';
 
@@ -23,7 +22,6 @@ export class OrderComponent implements OnInit {
 
   ngOnInit(): void {
     this.client = new Client();
-    this.client.id = 4;
 
     this.chosenProductId = 0;
 
@@ -34,19 +32,14 @@ export class OrderComponent implements OnInit {
     this.order.orderStatus = 0;
     this.order.orderProduct = new Product();
     this.order.orderProduct.id = this.chosenProductId;
-    this.order.id = 3;
-  }
-
-  getProduct(id) {
-    this.productService.getProduct(id)
-      .subscribe((data: Product) => {this.product = data;});
   }
 
   saveOrder() {
     this.order.orderClient = this.client;
     this.order.orderProduct = this.product;
     this.order.orderPrice = this.product.productPrice * this.order.orderNumber;
-    this.productService.saveOrder(this.order);
+
+    this.productService.saveOrder(this.order).subscribe(data => {this.order = data; });
   }
 
 }

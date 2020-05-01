@@ -8,7 +8,6 @@ import {ProductListComponent} from './product-list/product-list.component';
 import {OrderComponent} from './order/order.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-// import {ProductListModule} from './product-list/product-list.module';
 
 @NgModule({
   declarations: [
@@ -23,9 +22,7 @@ import {RouterModule} from '@angular/router';
     ReactiveFormsModule,
     RouterModule.forRoot([
       {path: '', component: ProductListComponent},
-     // {path: 'order', component: OrderComponent},
     ]),
-    // AppRoutingModule,
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

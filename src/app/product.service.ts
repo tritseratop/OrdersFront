@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Product} from './classes/product';
-import {Example} from './example';
 import {Observable} from 'rxjs';
 import {Category} from './classes/category';
 import {Orders} from './classes/orders';
@@ -35,13 +34,7 @@ export class ProductService {
     return this.http.get<Product>(`${this.ordersUrl}${id}`, { observe: 'body', responseType: 'json'});
   }
 
-  public saveOrder(order: Orders) {
-    this.http.put(`${this.ordersUrl}client`, order.orderClient);
-    console.log("REST");
-    return this.http.put(`${this.ordersUrl}order`, order);
-  }
-
-  public putExample(example: Example) {
-    return this.http.put('http://localhost:8080/OrdersBack-1.0-SNAPSHOT/order/putexample', example);
+  public saveOrder(order: Orders): Observable<Orders> {
+    return this.http.post<Orders>(`${this.ordersUrl}order`, order);
   }
 }

@@ -11,6 +11,17 @@
   <h3>Введите e-mail:</h3>
   <input [(ngModel)]="client.clientEmail" placeholder="E-mail">
   <button (click) = "saveOrder()">Оформить заказ</button>
-  <div *ngIf="order.orderProduct.id != 0">Заказ: {{order.orderPrice}} {{order.orderProduct.productName}} {{order.orderStatus}} {{order.orderClient.clientName}}</div>
+  <div *ngIf="order.orderProduct.id != 0">
+    <div>
+      Стоимость: {{order.orderPrice}}
+      Наименование: {{order.orderProduct.productName}}
+      Статус: {{order.orderStatus}}
+      Ваше имя: {{order.orderClient.clientName}}
+      Id клиента: {{order.orderClient.id}}
+    </div>
+    <div *ngIf="order.id != 0">
+      Ваш заказ принят!
+    </div>
+  </div>
 </div>
 
