@@ -22,9 +22,9 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.productService.getAllProducts().subscribe(data => {
+    /*this.productService.getAllProducts().subscribe(data => {
       this.products = data;
-    });
+    });*/
     this.productService.getAllCategories().subscribe(data => {
       this.categories = data;
     });

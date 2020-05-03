@@ -1,27 +1,29 @@
 <div  *ngIf="chosenProductId != 0">
-  <div>{{product.productName}}</div>
-  <input type = "number" min = "1" max = "{{product.productNumber}}" [(ngModel)]="order.orderNumber">
-  <p>Стоимость: {{product.productPrice * order.orderNumber}}</p>
-  <h3>Введите ФИО:</h3>
-  <input [(ngModel)]="client.clientName" placeholder="ФИО">
-  <h3>Введите адрес:</h3>
-  <input [(ngModel)]="client.clientAddress" placeholder="Адрес">
-  <h3>Введите мобильный телефон (без 8):</h3>
-  <input [(ngModel)]="client.clientMobile" placeholder="Мобильный телефон">
-  <h3>Введите e-mail:</h3>
-  <input [(ngModel)]="client.clientEmail" placeholder="E-mail">
-  <button (click) = "saveOrder()">Оформить заказ</button>
-  <div *ngIf="order.orderProduct.id != 0">
-    <div>
-      Стоимость: {{order.orderPrice}}
-      Наименование: {{order.orderProduct.productName}}
-      Статус: {{order.orderStatus}}
-      Ваше имя: {{order.orderClient.clientName}}
-      Id клиента: {{order.orderClient.id}}
-    </div>
+<h3>Продукт для заказа: {{product.productName}}</h3>
+  <h3>Выберете количество продуктов:</h3>
+  <form [formGroup]="orderForm" (ngSubmit)="onSubmit(orderForm.value)">
+    <input class="input-number" type = "number" min = "1" max = "{{product.productNumber}}" [(ngModel)]="orderNumber" formControlName="orderNumber" required>
+    <p class="info">Стоимость: {{product.productPrice * orderNumber}}</p>
+    <h3>Введите ФИО:</h3>
+    <input class="input" type="text" placeholder="ФИО" id="clientName" formControlName="clientName" required>
+    <h3>Введите адрес:</h3>
+    <input class="input" type="text" placeholder="Адрес" formControlName="clientAddress" required>
+    <h3>Введите мобильный телефон:</h3>
+    <div class="info">без 8, пробелов и других дополнительных знаков</div>
+    <input class="input" type = "number" pattern="[0-9]{10}" placeholder="Мобильный телефон" formControlName="clientMobile" required>
+    <h3>Введите e-mail:</h3>
+    <input class="input" type="text" placeholder="E-mail" formControlName="clientEmail" required>
+    <button class="accept-button" type="submit">Оформить заказ</button>
+  </form>
+
+  <div class="accepted-order" *ngIf="order.orderProduct.id != 0">
+    <div class="accepted-order">
+      <p>Стоимость: {{order.orderPrice}}</p>
+      <p>Наименование: {{order.orderProduct.productName}}</p>
+      <p>Ваше имя: {{order.orderClient.clientName}}</p>
     <div *ngIf="order.id != 0">
       Ваш заказ принят!
     </div>
   </div>
 </div>
-
+</div>

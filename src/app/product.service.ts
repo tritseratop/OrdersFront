@@ -22,7 +22,7 @@ export class ProductService {
   }
 
   public getProductsByCategory(category: Category): Observable<Product[]> {
-    return this.http.post<Product[]>(this.ordersUrl, category);
+    return this.http.post<Product[]>(`${this.ordersUrl}findByCategory`, category);
   }
 
   getAllCategories(): Observable<Category[]> {

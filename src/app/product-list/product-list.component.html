@@ -1,15 +1,14 @@
 <h3>Выберите категорию: </h3>
-<div *ngFor="let categoryElement of categories">
-  <a (click)="setCategory(categoryElement)">{{ categoryElement.categoryName }}</a>
-  <div></div>
+<div class = "category-list" *ngFor="let categoryElement of categories">
+  <div class = "category" (click)="getProductsByCategory(categoryElement)">{{ categoryElement.categoryName }}</div>
 </div>
 
-<div *ngIf="category.id != 0">Выберете продукт: </div>
-<div *ngFor="let productElement of products">
-  <div *ngIf="category.id == productElement.productCategory.id">
-    <a >{{ productElement.productName }}</a>
-    <button (click)="setProduct(productElement)">Перейти к заказу</button>
-  </div>
-</div>
+<h3 *ngIf="category.id != 0">Выберете продукт: </h3>
+  <table class = "product-table">
+    <tr class = "list-string" *ngFor="let productElement of products">
+      <td>{{ productElement.productName }}</td>
+      <td class = "product-button-column"><button class = "product-button" (click)="setProduct(productElement)">Перейти к заказу</button></td>
+    </tr>
+  </table>
 
 <app-order [chosenProductId] = "chosenProductId" [product]="product"></app-order>

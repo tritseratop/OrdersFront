@@ -1,0 +1,53 @@
+.category-list {
+  display: inline-block;
+  text-decoration: none;
+}
+
+h3 {
+  font-weight: normal;
+  margin-bottom: 0px;
+}
+
+.category {
+  background-color: lightgray;
+  margin: 1%;
+  padding: 9px 9px 9px;
+  border-radius: 5px;
+  border: 0px solid;
+}
+
+.category:hover {
+  color: teal;
+}
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.product-button-column {
+  width: 150px;
+  text-align: right;
+}
+
+.product-button {
+  font-family: "Lucida Sans Unicode", serif;
+  padding: 3px 9px 3px;
+  background-color: lightgray;
+  color: teal;
+  border: none;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.list-string {
+  background-color: #f0f0f0;
+  height: 40px;
+}
+
+TD, TH {
+  padding: 8px; /* Поля вокруг содержимого ячейки */
+  border-bottom: 1px solid lightgray;
+}
